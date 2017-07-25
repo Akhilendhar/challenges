@@ -5,60 +5,51 @@ import java.util.StringTokenizer;
 
 @SuppressWarnings("unused")
 class LongestPalindromeFinder {
-	public static void main(String args[]) {
-		// TODO Auto-generated method stub
-		String str1 = "hah harsha madam ded";
-		StringTokenizer s = new StringTokenizer(str1);
-		// System.out.println("No.of tokens in given string are " +
-		// s.countTokens());
-		while (s.hasMoreElements()) {
-			palindrome(s.nextToken());
-		}
-		System.out.println();
-		sizeOfString(str1);
-	}
+public static void main(String[] args) {
+String str = "aba abcba abcdcba abcd";
+ArrayList<String> list = new ArrayList<>();
+String[] words = str.split("\\s");
 
-	public static void palindrome(String str) {
-		String revstring = "";
+for (String w : words) {
+String original = w;
 
-		for (int i = str.length() - 1; i >= 0; --i) {
-			revstring += str.charAt(i);
-		}
+String reverse = "";
+int length = original.length();
 
-		// System.out.println(revstring);
+for (int i = length - 1; i >= 0; i--) {
 
-		if (revstring.equalsIgnoreCase(str)) {
-			System.out.println(str + " is a Palindrome");
+reverse = reverse + original.charAt(i);
+}
 
-		}
+if (original.equals(reverse)) {
+System.out.println(original + " is a palindrome.");
 
-	}
+list.add(original);
 
-	static public void sizeOfString(String s) {
-		String str = s;
-		char ch = ' ';
-		int len = str.length(), l;
-		int min = len, max = 0;
-		String shortest_word = "", longest_word = "", word = "";
-		for (int i = 0; i < len; i++) {
-			ch = str.charAt(i);
-			if (ch != ' ') {
-				word += ch;
-			} // if ends
-			else {
-				l = word.length();
-				if (l < min) {
-					min = l;
-					shortest_word = word;
-				} // if ends
-				if (l > max) {
-					max = l;
-					longest_word = word;
-				}
-				word = "";
-			}
-		}
-		System.out.println(shortest_word + " is smallest palindrome");
-		System.out.println(longest_word + " is largest palindrome");
-	}
+}
+
+}
+longestPalindromeString(list);
+}
+
+private static void longestPalindromeString(ArrayList<String> list) {
+
+String minvalue = list.get(0);
+String maxvalue = list.get(0);
+
+for (int i = 1; i < list.size(); i++) {
+if (minvalue.length() > list.get(i).length()) {
+
+minvalue = list.get(i);
+} else {
+maxvalue = list.get(i);
+}
+
+}
+
+System.out.println("minimum palindrome is :" + minvalue);
+System.out.println("maximum palindrome is :" + maxvalue);
+
+}
+}
 }
